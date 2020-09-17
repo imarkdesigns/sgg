@@ -1,2 +1,2 @@
-# sgg
+# SGG
 Sports Gambling Guides Repo
