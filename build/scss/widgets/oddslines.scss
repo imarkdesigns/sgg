@@ -1,0 +1,27 @@
+[data-card="oddslines"] {
+
+    .oddslines-lists {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(230px, 100%));
+        gap: 15px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            background: transparent;
+            width: 0;
+        }
+
+        figure {
+            display: inline-block;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        figure img {
+            width: 100%;
+            min-height: 130px;
+            object-fit: cover;
+        }
+    }
+
+} // end

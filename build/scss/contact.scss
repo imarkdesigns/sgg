@@ -1,0 +1,29 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/content";
+
+.main .uk-grid {
+
+    .uk-width-expand\@l {
+        order: 1;
+    }
+
+    .uk-width-large\@l {
+        order: 0;
+    }
+
+    @media ( min-width: 1200px ) {
+
+        .uk-width-expand\@l {
+            order: 0;
+        }
+
+        .uk-width-large\@l {
+            order: 1;
+        }
+
+    }
+
+} // end

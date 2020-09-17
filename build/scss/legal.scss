@@ -1,0 +1,15 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/content";
+
+
+// Sidebar Content
+@import "widgets/guides",
+        "widgets/news";
+
+p a {
+    color: $sgg-green;
+    border-bottom: 1px dotted rgba($sgg-green, 0.25);
+}

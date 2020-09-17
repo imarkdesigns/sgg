@@ -1,0 +1,69 @@
+// Button Primary
+.uk-button-primary {
+
+    background: $sgg-green;
+    text-shadow: none;
+    line-height: normal;
+
+    &.uk-button-large {
+        font-family: $bold;
+        padding: 15px 30px;
+        border-radius: 3px;
+    }
+
+    &.uk-button-small {
+        font-family: $bold;
+        padding: 7px 15px;
+        border-radius: 3px;
+    }
+
+    &:focus,
+    &:hover {
+        background: darken($sgg-green, 5%);
+    }
+
+} // end
+
+// Card
+.uk-card {
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-shadow: none;
+
+    &.uk-card-default {
+        background: #F7F8FD;
+    }
+
+    &.uk-card-primary {
+        background: $sgg-green;
+    }
+
+    h1,
+    h1.uk-card-title {
+        font-family: $bold;
+        color: $sgg-black;
+        line-height: 1.2;
+        margin-bottom: 30px;
+
+        + p {
+            margin-top: -25px;
+            margin-bottom: 30px;
+        }
+    }
+
+    h2, h3 {
+        font-family: $sbold;
+        color: $sgg-black;
+    }
+
+
+
+} // end
+
+// Border
+.uk-border-remove {
+    border-top: 0 !important;
+}
+
+
+

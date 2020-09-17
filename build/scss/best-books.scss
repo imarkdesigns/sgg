@@ -1,0 +1,63 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/sportsbooks",
+        "widgets/content";
+
+// Sidebar Content
+@import "widgets/guides",
+        "widgets/news";
+
+[data-card="legal-states"] {
+
+    table {
+        background: #FFF;
+        border-radius: 3px;
+        overflow: hidden;
+
+        thead {
+            background-color: $sgg-green;
+        }
+
+        thead * {
+            font-family: $sbold;
+            font-size: 14px;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        tbody * {
+            font-size: 14px;
+        }
+
+        tr.uk-active {
+            background: none;
+
+            td:first-child {
+                color: $sgg-green;
+            } 
+        }
+    }
+
+} // end
+
+[data-card="other-legal-states"] {
+    
+    .uk-grid h4 {
+        font-size: 18px;
+        font-family: $sbold;
+        margin: 0 0 5px;
+    }
+
+    .uk-grid ul {
+        list-style: square;
+        line-height: 1.8;
+        margin-top: 0;
+        padding-left: 20px;
+    }
+
+} // end
+
+
+

@@ -1,0 +1,65 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/content";
+
+// Sidebar Content
+@import "widgets/bestbooks",
+        "widgets/guides",
+        "widgets/news";
+
+
+[data-card="guides"] {
+
+    .uk-article img {
+        max-width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 3px;
+    }
+
+    .uk-article h3 {
+        font-size: 18px;
+        margin: 10px 0;
+
+        a {
+            color: $sgg-black;
+
+            &:focus,
+            &:hover {
+                color: $sgg-green;
+            }
+        }        
+    }
+
+}
+
+[data-card="Gtag"] {
+
+    .tagcloud a {
+        display: inline-block;
+        background: #FFF;
+        font-size: 14px !important;
+        color: #444;
+        margin: 0 6px 8px 0;
+        padding: 5px 10px;
+        border: 1px solid $sgg-line;
+        border-radius: 2px;
+        transition: 300ms ease-out;
+
+        &:focus,
+        &:hover {
+            background: rgba($sgg-green, .90);
+            color: #FFF;
+            border-color: $sgg-green;
+        }
+    }
+
+}
+
+
+
+
+
+

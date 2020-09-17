@@ -1,0 +1,13 @@
+[data-card="content"] {
+
+    p > em,
+    p > i {
+        font-family: $italic;
+        font-style: italic;
+    }
+
+    p > a {
+        color: $sgg-green;
+    }
+
+} // end

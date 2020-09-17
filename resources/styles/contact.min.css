@@ -1,0 +1,23 @@
+[data-card=content] p > em,
+[data-card=content] p > i {
+  font-family: OpenSans-Italic;
+  font-style: italic;
+}
+[data-card=content] p > a {
+  color: #00A305;
+}
+
+.main .uk-grid .uk-width-expand\@l {
+  order: 1;
+}
+.main .uk-grid .uk-width-large\@l {
+  order: 0;
+}
+@media (min-width: 1200px) {
+  .main .uk-grid .uk-width-expand\@l {
+    order: 0;
+  }
+  .main .uk-grid .uk-width-large\@l {
+    order: 1;
+  }
+}

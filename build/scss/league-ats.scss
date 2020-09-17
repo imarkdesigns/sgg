@@ -1,0 +1,134 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/sportsbooks",
+        "widgets/content";
+
+// Sidebar Content
+@import "widgets/bestbooks",
+        "widgets/guides",
+        "widgets/news";
+
+[data-card="odds-ats"] {
+
+    .uk-position-relative {
+        margin-bottom: 60px;
+    }
+
+    .uk-overflow-auto {
+        max-width: 100%;
+        margin-left: 180px;
+    }
+
+    .uk-table {
+        margin-top: 0;
+        margin-bottom: 0;
+        border: solid $sgg-line;
+        border-width: 1px 0;
+    }
+
+    .uk-table thead tr {
+        font-family: $sbold;
+        text-transform: uppercase;
+
+        th small {
+            display: block;
+            font-size: 11px;
+        }
+    }
+
+    .uk-table tbody tr {
+
+        td:not(:first-child) {
+            text-align: center;
+            height: 58px;
+            vertical-align: middle;
+        }
+
+    }
+
+    thead,
+    tbody,
+    tbody tr {
+        position: relative;
+    }
+
+    thead th {
+        text-align: center;
+        text-transform: capitalize;
+        height: 55px;
+        border: solid $sgg-line;
+        border-width: 1px 0;
+
+        &:first-child {
+            display: flex;
+            align-items: flex-end;
+            font-family: $bold;
+            font-size: 16px;
+            color: $sgg-black;
+            text-align: left;
+            height: 68px;
+        }
+    }
+
+    thead .team-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 180px;
+        border-right: 1px solid $sgg-line;
+    }
+
+    tbody .team-panel {
+        position: absolute;
+        top: auto;
+        left: 0;
+        font-size: 14px;
+        width: 180px;
+        border-bottom: 1px solid $sgg-line;
+        border-right: 1px solid $sgg-line;
+    }
+
+    tbody .team-panel img {
+        width: 36px;
+        height: 24px;
+        padding-right: 12px;
+        object-fit: contain;
+    }
+
+    thead th:not(.team-label),
+    tbody td:not(.team-panel) {
+        min-width: 180px;
+    }
+
+    @media ( min-width: 640px ) {
+
+        .uk-overflow-auto {
+            margin-left: 260px;
+        }
+
+        thead th:not(.team-label),
+        tbody td:not(.team-panel) {
+            min-width: 180px;
+        }
+
+
+        thead .team-label,
+        tbody .team-panel {
+            width: 260px;
+        }
+
+        tbody .team-panel {
+            font-size: 16px;
+        }
+
+        thead .team-label,
+        tbody .team-panel {
+            padding: 16px 24px;
+        }
+
+    }
+
+
+}

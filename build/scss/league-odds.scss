@@ -1,0 +1,38 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/odds",
+        "widgets/content";
+
+
+.odds-locations {
+
+    .uk-subnav-pill {
+        > .uk-active > a {
+            background: $sgg-green;
+            color: #FFF;
+        }
+
+        > li > a {
+            font-family: $sbold;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 2px;
+
+            &:focus,
+            &:hover {
+                background: $sgg-line;
+            }
+        }
+    }
+
+    .uk-select {
+        background: transparent;
+        font-size: 14px;
+        width: 250px !important;
+        max-width: 250px;
+        border: 1px solid $sgg-line;
+    }
+
+}

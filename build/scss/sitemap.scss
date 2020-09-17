@@ -1,0 +1,46 @@
+// Import mixins
+@import "common/mixins";
+
+// Main Content
+@import "widgets/content";
+
+
+// Sidebar Content
+@import "widgets/guides",
+        "widgets/news";
+
+[data-card="content"] {
+    
+    ul.uk-list > li {
+        font-size: 14px;
+        margin-top: 5px !important;
+    }
+
+    ul.uk-list > li > a,
+    [uk-grid] > ul ul a {
+        color: #888;
+
+        &:focus,
+        &:hover {
+            color: $sgg-green;
+        }
+    }
+
+    [uk-grid] > ul li {
+        list-style-type: none;
+        font-size: 14px;
+        color: #444;
+        margin-top: 5px;
+        padding: 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    [uk-grid] > ul ul {
+        margin-top: 10px;
+        padding: 0;
+    }
+
+}

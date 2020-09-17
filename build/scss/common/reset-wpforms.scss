@@ -1,0 +1,209 @@
+//* All WPForms
+
+.wpforms-contact,
+.wpforms-newsletter {
+
+    .uk-text-meta {
+        font-family: $regular;
+        font-size: 12px !important;
+        font-weight: 400;
+        color: #666;
+    }
+
+} // end
+
+.wpforms-contact {
+    margin-bottom: 0;
+
+    .wpforms-field-container {
+        .wpforms-field {
+            margin-bottom: 20px;
+            padding: 0 !important;
+        }
+
+        .wpforms-field-label {
+            font-family: $regular;
+            font-size: 14px !important;
+            font-weight: normal !important;
+            
+            .wpforms-required-label {
+                position: relative;
+                top: -2px;
+                display: none !important;
+                font-size: 10px;
+                font-weight: 300;
+            }
+        }
+
+        .wpforms-field-description {
+            font-family: $regular;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .wpforms-one-half {
+            width: calc( 50% - 5px ) !important;
+            margin-left: 10px !important;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=tel],
+        textarea {
+            position: relative;
+            background-color: rgba(#FFF, 1) !important;
+            font-family: $regular;
+            font-size: 14px !important;
+            color: #888 !important;
+            border: 1px solid $sgg-line !important;
+            border-radius: 2px !important;
+            appearance: none !important;
+
+            &.wpforms-error {
+                border-color: $dangered !important;
+            }
+        }
+
+        label.wpforms-error {
+            display: none !important;
+        }
+  
+        @media ( max-width: 959px ) {
+            .wpforms-one-half,
+            .wpforms-one-third {
+                width: 100%  !important;
+                margin-left: 0 !important;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .wpforms-submit-container {
+        button[type=submit] {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: $sgg-green !important;
+            font-size: 14px !important;
+            color: #FFF !important;
+            text-transform: uppercase !important;
+            line-height: 1.4;
+            height: 45px;
+            padding: 0 40px 1px !important;
+            border: 0 !important;
+            border-radius: 2px;
+
+            &:focus,
+            &:hover {
+                background: darken($sgg-green, 5%) !important;
+            }
+        }
+    }
+
+}
+
+.wpforms-newsletter {
+    margin-bottom: 0 !important;
+
+    .wpforms-field-container {
+        .wpforms-field {
+            margin-bottom: 10px;
+            padding: 0 !important;
+        }
+
+        .wpforms-field-label {
+            font-family: $regular;
+            font-size: 14px !important;
+            font-weight: normal !important;
+            
+            .wpforms-required-label {
+                position: relative;
+                top: -2px;
+                display: none !important;
+                font-size: 10px;
+                font-weight: 300;
+            }
+        }
+
+        .wpforms-field-description {
+            font-family: $regular;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .wpforms-one-half {
+            width: calc( 50% - 5px ) !important;
+            margin-left: 10px !important;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=tel],
+        textarea {
+            position: relative;
+            background-color: rgba(#FFF, 1) !important;
+            font-family: $regular;
+            font-size: 14px !important;
+            color: #888 !important;
+            border: 1px solid $sgg-line !important;
+            border-radius: 2px !important;
+            appearance: none !important;
+
+            &.wpforms-error {
+                border-color: $dangered !important;
+            }
+        }
+
+        .wpforms-field-checkbox {
+            ul li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            ul input {
+                position: relative;
+                top: 2px;
+            }
+
+            ul label {
+                font-size: 14px !important;
+            }
+        }
+
+        label.wpforms-error {
+            display: none !important;
+        }
+    
+        @media ( max-width: 959px ) {
+            .wpforms-one-half,
+            .wpforms-one-third {
+                width: 100%  !important;
+                margin-left: 0 !important;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .wpforms-submit-container {
+        button[type=submit] {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: $sgg-green !important;
+            font-size: 14px !important;
+            color: #FFF !important;
+            text-transform: uppercase !important;
+            line-height: 1.4;
+            height: 45px;
+            padding: 0 40px 1px !important;
+            border: 0 !important;
+            border-radius: 2px;
+
+            &:focus,
+            &:hover {
+                background: darken($sgg-green, 5%) !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,147 @@
+//* Path to Resources->Images
+$img : "../images";
+
+//* Override Fonts
+$regular     : OpenSans-Regular;
+$italic      : OpenSans-Italic;
+$light       : OpenSans-Light;
+$sbold       : OpenSans-SemiBold;
+$sbolditalic : OpenSans-SemiBoldItalic;
+$bold        : OpenSans-Bold;
+$passion     : PassionOne-Regular;
+
+$system     : -apple-system, Roboto, Ubuntu, sans-serif;
+
+//* Brand Colors
+$sgg-green  : #00A305;
+$sgg-black  : #000000;
+$sgg-line   : #E1E2E9;
+$sgg-bg     : #EBECF5;
+
+
+//* Override Colors
+$base       : darken(#FFF, 75%) !default;
+$default    : #E5E5E5;
+$primary    : #2185d0;
+$secondary  : #000000;
+
+$danger     : #F0506E;
+$warning    : #FAA05A;
+$success    : #32D296;
+
+$dangered   : #D85030;
+$warned     : #E28327;
+$succeed    : #659F13;
+
+$red        : #B03060;
+$orange     : #F37021;
+$yellow     : #FFD700;
+$olive      : #32CD32;
+$green      : #016936;
+$teal       : #008080;
+$blue       : #0E6EB8;
+$violet     : #EE82EE;
+$purple     : #B413EC;
+$pink       : #FF1493;
+$brown      : #A52A2A;
+$grey       : #A0A0A0;
+
+//* Customized Mixins
+//- Font Selections
+@mixin font( $fs: false, $fw: false, $lh: false, $ff: $sansserif ) {
+    @if ( $fs != false ) {
+        font-size: #{$fs};
+    }
+
+    @if ( $fw != false ) {
+        font-weight: #{$fw};
+    }
+
+    @if ( $lh != false ) {
+        line-height: #{$lh};
+    }
+
+    @if ( $ff != false ) {
+        font-family: #{$ff};
+    }
+}
+
+//- Sizing
+@mixin size( $width, $height: false ) {
+    width: $width;
+
+    @if ( $height != false ) {
+        height: $height;
+    } @else {
+        height: $width;
+    }
+}
+
+//- Hide Text
+@mixin hideText() {
+    text-indent: 110%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+//- Sharpen Text
+@mixin sharpText() {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+//- Input | Textarea Placeholder
+@mixin placeholder( $color: #888 ) {
+    @include option-at-root('::-webkit-input-placeholder') {
+        color: $color;
+        @content;
+    }
+
+    @include option-at-root(':-moz-placeholder') {
+        color: $color;
+        @content;
+    }
+
+    @include option-at-root('::-moz-placeholder') {
+        color: $color;
+        @content;
+    }
+
+    @include option-at-root(':-ms-input-placeholder') {
+        color: $color;
+        @content;
+    }
+}
+
+//- Border Radius
+@mixin rounded($keyword: '', $value: $defaultRadius) {
+    $corners: false;
+
+    @if ($keyword != false) {
+        background-clip: border-box;
+
+        @if ($keyword == left or $keyword == right) {
+            $corners: border-top-#{$keyword}-radius,
+            border-bottom-#{$keyword}-radius;
+        } @else if ($keyword == top or $keyword == bottom) {
+            $corners: border-#{$keyword}-left-radius,
+            border-#{$keyword}-right-radius;
+        }
+
+        @if ($corners != false) {
+            @each $corner in $corners {
+                #{$corner}: $value;
+            }
+        } @else {
+            @if (type-of($keyword) == number) {
+                $value: $keyword;
+            }
+
+            @if (unit($value) == '') {
+                $value: $value + rem;
+            }
+
+            border-radius: $value;
+        }
+    }
+}

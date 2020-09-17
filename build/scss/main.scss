@@ -1,0 +1,22 @@
+//* Import Common Styles
+@import "common/fonts",
+        "common/mixins",
+        "common/global";
+
+//* Import Components Styles
+@import "components/header",
+        "components/menu",
+        "components/footer",
+        "components/router",
+        "components/sidebar";
+
+//* Import Resets Styles
+@import "common/reset-wp",
+        "common/reset-uikit",
+        "common/reset-wpforms";
+
+//* Global Class for Main
+.main .uk-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

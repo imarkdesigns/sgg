@@ -1,0 +1,100 @@
+[data-globals="footer"] {
+
+    nav.footer-directory {
+        position: relative;
+        background: #222;
+        min-height: 250px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .uk-width-large\@l .uk-panel,
+        .uk-width-large\@l .uk-subnav li a {
+            font-size: 12px;
+            text-transform: none;
+        }
+
+        .uk-width-large\@l .uk-subnav {
+            margin: 0;
+
+            > * {
+                padding-left: 10px;
+            }
+
+            &.uk-subnav-divider {
+                margin-left: -21px;
+
+                > ::before {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .uk-accordion-content .uk-nav li a {
+            font-size: 12px;
+            max-width: 150px;
+        }
+
+        .uk-accordion-title {
+            font-family: $sbold;
+            font-size: 14px;
+        }
+        
+        @media ( min-width: 960px ) {
+
+            .uk-grid-divider>:not(.uk-first-column)::before {
+                border: 0;
+            }
+
+            .uk-accordion li {
+                margin-top: 0;
+            }
+
+            .uk-accordion-title {
+                pointer-events: none;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+        }
+
+    }
+
+    section.footer {
+        position: relative;
+        background: #111;
+        font-family: $regular;
+        font-size: 12px;
+        text-align: center;
+        padding: 20px 0;
+
+        .uk-flex {
+            justify-content: center;
+        }
+
+        img {
+            height: 32px;
+            margin-left: 20px;
+        }
+
+        .icon-twentyone {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            @include size(32px);
+            border: 2px solid $sgg-line;
+            border-radius: 50px;
+
+            &::before {
+                content: "21+";
+                position: relative;
+                top: 1px;
+                font-family: $system;
+                font-size: 10px;
+                color: #FFF;
+            }
+        }
+    }
+
+} // end
