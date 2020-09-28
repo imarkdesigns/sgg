@@ -150,10 +150,15 @@
         padding: 5px 10px 3px;
         border-radius: 3px;
 
-        span {
+        i.uk-icon {
             position: relative;
             top: -2px;
         }
+    }
+
+    @media ( min-width: 960px ) {
+
+
     }
 
     @media ( min-width: 1400px ) {
@@ -208,9 +213,10 @@
 }
 
 .uk-offcanvas-bar {
-    background: rgba($sgg-black, 0.85);
-    backdrop-filter: blur(4px);
-    width: 370px;
+    background: rgba($sgg-black, 0.95);
+    // backdrop-filter: blur(4px);
+    max-width: 370px;
+    width: 100%;
     padding: 40px 25px;
 
     img {

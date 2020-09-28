@@ -107,8 +107,9 @@
 
     .wpforms-field-container {
         .wpforms-field {
-            margin-bottom: 10px;
+            margin-bottom: 0; 
             padding: 0 !important;
+            overflow: visible !important;
         }
 
         .wpforms-field-label {
@@ -173,6 +174,12 @@
 
         label.wpforms-error {
             display: none !important;
+        }
+
+        @media ( min-width: 640px ) {
+            .wpforms-field {
+                margin-bottom: 10px;
+            }
         }
     
         @media ( max-width: 959px ) {

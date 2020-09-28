@@ -58,10 +58,11 @@
 
     .uk-overflow-auto {
         max-width: 100%;
-        margin-left: 180px;
+        margin-left: 160px;
     }
 
     .uk-table {
+        width: 100%;
         margin-top: 0;
         margin-bottom: 0;
         border: solid $sgg-line;
@@ -114,7 +115,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 180px;
+        width: 160px;
         border-right: 1px solid $sgg-line;
     }
 
@@ -123,7 +124,7 @@
         top: auto;
         left: 0;
         font-size: 14px;
-        width: 180px;
+        width: 160px;
         border-bottom: 1px solid $sgg-line;
         border-right: 1px solid $sgg-line;
     }
@@ -233,6 +234,7 @@
 
         td {
             font-size: 12px;
+            height: 53px;
         }
     }
 
@@ -241,6 +243,7 @@
         top: auto;
         left: 0;
         width: 180px;
+        height: 55px !important;
         border-bottom: 5px solid $sgg-green;
     }
 
@@ -271,6 +274,10 @@
         }
 
     }
+
+    
+
+
 
 
 } // end
