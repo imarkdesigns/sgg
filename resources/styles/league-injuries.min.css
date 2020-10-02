@@ -1,3 +1,18 @@
+[data-card=sportsbooks] .uk-flex {
+  flex-wrap: wrap;
+}
+[data-card=sportsbooks] .uk-flex div {
+  max-width: 200px;
+  width: 100%;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+@media (min-width: 960px) {
+  [data-card=sportsbooks] .uk-flex div {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
 [data-card=sportsbooks] .sportsbooks-lists {
   display: grid;
   grid-template-columns: 1fr;
@@ -91,7 +106,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 170px;
 }
 [data-card=sportsbooks] .sbl-details {
   text-align: left;

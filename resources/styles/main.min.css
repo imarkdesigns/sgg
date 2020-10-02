@@ -224,7 +224,8 @@ address {
   color: #FFF;
   width: 100%;
   margin: 0;
-  padding: 15px 20px;
+  padding: 15px 90px 15px 20px;
+  z-index: 10001;
 }
 [data-router=cookie] p {
   margin: 0;
@@ -499,7 +500,7 @@ address {
   padding: 5px 10px 3px;
   border-radius: 3px;
 }
-[data-globals=menu] .newsletter span {
+[data-globals=menu] .newsletter i.uk-icon {
   position: relative;
   top: -2px;
 }
@@ -541,10 +542,9 @@ address {
 }
 
 .uk-offcanvas-bar {
-  background: rgba(0, 0, 0, 0.85);
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
-  width: 370px;
+  background: rgba(0, 0, 0, 0.95);
+  max-width: 370px;
+  width: 100%;
   padding: 40px 25px;
 }
 .uk-offcanvas-bar img {
@@ -685,6 +685,9 @@ address {
 .uk-card.uk-card-primary {
   background: #00A305;
 }
+.uk-card.uk-card-body {
+  padding: 15px;
+}
 .uk-card h1,
 .uk-card h1.uk-card-title {
   font-family: OpenSans-Bold;
@@ -700,6 +703,11 @@ address {
 .uk-card h2, .uk-card h3 {
   font-family: OpenSans-SemiBold;
   color: #000000;
+}
+@media (min-width: 640px) {
+  .uk-card.uk-card-body {
+    padding: 30px;
+  }
 }
 
 .uk-border-remove {
@@ -796,8 +804,9 @@ address {
   margin-bottom: 0 !important;
 }
 .wpforms-newsletter .wpforms-field-container .wpforms-field {
-  margin-bottom: 10px;
+  margin-bottom: 0;
   padding: 0 !important;
+  overflow: visible !important;
 }
 .wpforms-newsletter .wpforms-field-container .wpforms-field-label {
   font-family: OpenSans-Regular;
@@ -855,6 +864,11 @@ address {
 }
 .wpforms-newsletter .wpforms-field-container label.wpforms-error {
   display: none !important;
+}
+@media (min-width: 640px) {
+  .wpforms-newsletter .wpforms-field-container .wpforms-field {
+    margin-bottom: 10px;
+  }
 }
 @media (max-width: 959px) {
   .wpforms-newsletter .wpforms-field-container .wpforms-one-half,

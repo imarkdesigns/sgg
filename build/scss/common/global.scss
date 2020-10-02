@@ -174,7 +174,8 @@ address {
     color: #FFF;
     width: 100%;
     margin: 0;
-    padding: 15px 40px 15px 20px;
+    padding: 15px 90px 15px 20px;
+    z-index: 10001;
 
     p {
         margin: 0;
@@ -202,91 +203,5 @@ address {
             border-color: $sgg-green;
         }
     }
-
-    // position: fixed !important;
-    // max-width: 320px;
-    // font-size: 16px;
-    // line-height: 1.2;
-    // // border: 1px solid #EEE;
-    // border-radius: 5px;
-    // box-shadow: 0 4px 4px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.08);
-    // z-index: 10001;
-
-    // &:hover .hidden-content {
-    //     max-height: 90px;
-    //     opacity: 1;
-    //     overflow: inherit;
-    //     transition: .35s;
-    // }
-
-    // img {
-    //     display: block;
-    //     @include size(45px);
-    //     margin-right: 10px;
-    // }
-
-    // p {
-    //     margin: 5px 0 0;
-
-    //     &:first-child {
-    //         margin-top: 0;
-    //     }
-
-    //     a {
-    //         color: #888;
-    //     }
-
-    //     &.hidden-content {
-    //         display: block;
-    //         max-height: 0;
-    //         opacity: 0;
-    //         overflow: hidden;
-    //         transform: translate3d(0, 0, 0);
-    //         transition: all 0.75s, height 0s;
-    //         transition-delay: .1s;
-    //         transition-timing-function: cubic-bezier(0.25, 1.6, 0.44, 0.93)
-    //     }
-    // }
-
-    // ul {
-    //     display: flex;
-    //     justify-content: space-between;
-    //     list-style: none;
-    //     margin: 10px 0 0;
-    //     padding: 0;
-
-    //     li {
-    //         position: relative;
-    //         padding: 5px;
-    //     }
-
-    //     button {
-    //         top: 5px;
-    //         left: 5px;
-    //         background: #949BA9 !important;
-    //         font-family: $bold;
-    //         color: #FFF;
-    //         font-size: 16px;
-    //         text-transform: none;
-    //         text-align: center;
-    //         line-height: 1.4;
-    //         @include size(135px, 45px);
-    //         margin: 1px;
-    //         padding: 0 20px 1px;
-    //         border: 0;
-    //         border-radius: 3px;
-    //         opacity: 1;
-    //         transition: 150ms ease-out;
-
-    //         &.uk-button-danger:hover {
-    //             background: darken($danger, 15%) !important;
-    //             color: #FFF;
-    //         }
-
-    //         &.uk-button-success:hover {
-    //             background: darken($success, 15%) !important;
-    //         }
-    //     }
-    // }
 
 }

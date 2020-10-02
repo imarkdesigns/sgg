@@ -139,12 +139,18 @@ function formatDate(date) {
 						<td class="sportsbook-panel">
 							<div class="uk-panel">
 								<div class="odds-sb-bookline">
-									<a href="#" target="_blank">
+                                    {{if sportsbook == "RiversCasinoPA"}}
+                                    <a href="https://wlsugarhouseaffiliates.adsrv.eacdn.com/C.ashx?btag=a_3320b_415c_&affid=947&siteid=3320&adid=415&c=" target="_blank">
+                                    {{else sportsbook == "UnibetNJ"}}
+                                    <a href="https://wlkindred.adsrv.eacdn.com/C.ashx?btag=a_783b_150c_&affid=195&siteid=783&adid=150&c=" target="_blank">                                        
+                                    {{else}}
+                                    <a>
+                                    {{/if}}
 										<span class="sb-bookline-extlink">
 											<span>
 											   {{= away_odds }} <small class="uk-margin-small-left">{{= away_payout }}</small>
 											</span>
-											<span class="sb-extlink-hover" {{if (sportsbook != 'RiversCasinoPA') }}hidden{{/if}}>
+											<span class="sb-extlink-hover" {{if (sportsbook != 'RiversCasinoPA' && sportsbook != 'UnibetNJ') }}hidden{{/if}}>
 												<svg viewBox="0 0 24 24" width="15" height="15" xmlns="https://www.w3.org/2000/svg" class="" fill="#F7F8FD"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path></svg>
 												<span>Bet Now</span>
 											</span>
@@ -152,12 +158,18 @@ function formatDate(date) {
 									</a>
 								</div>
 								<div class="odds-sb-bookline">
-									<a href="#" target="_blank">
+                                    {{if sportsbook == "RiversCasinoPA"}}
+                                    <a href="https://wlsugarhouseaffiliates.adsrv.eacdn.com/C.ashx?btag=a_3320b_415c_&affid=947&siteid=3320&adid=415&c=" target="_blank">
+                                    {{else sportsbook == "UnibetNJ"}}
+                                    <a href="https://wlkindred.adsrv.eacdn.com/C.ashx?btag=a_783b_150c_&affid=195&siteid=783&adid=150&c=" target="_blank">                                           
+                                    {{else}}
+                                    <a>
+                                    {{/if}}
 										<span class="sb-bookline-extlink">
 											<span>
 												{{= home_odds }} <small class="uk-margin-small-left">{{= home_payout }}</small>
 											</span>
-											<span class="sb-extlink-hover" {{if (sportsbook = 'RiversCasinoPA') }}hidden{{/if}}>
+											<span class="sb-extlink-hover" {{if (sportsbook != 'RiversCasinoPA' && sportsbook != 'UnibetNJ') }}hidden{{/if}}>
 												<svg viewBox="0 0 24 24" width="15" height="15" xmlns="https://www.w3.org/2000/svg" class="" fill="#F7F8FD"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path></svg>
 												<span>Bet Now</span>
 											</span>
@@ -191,75 +203,75 @@ function formatDate(date) {
 			{{else}}
 			  
 				<td class="sportsbook-panel">
-                        <div class="uk-panel">
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
-                            </div>
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
+                    <div class="uk-panel">
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
                             </div>
                         </div>
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
+                            </div>
+                        </div>
+                    </div>
                  </td>
 				 <td class="sportsbook-panel">
-                        <div class="uk-panel">
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
-                            </div>
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
+                    <div class="uk-panel">
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
                             </div>
                         </div>
-                    </td>
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
 				<td class="sportsbook-panel">
-                        <div class="uk-panel">
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
-                            </div>
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
+                    <div class="uk-panel">
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
                             </div>
                         </div>
-                    </td>
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
 				<td class="sportsbook-panel">
-                        <div class="uk-panel">
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
-                            </div>
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
+                    <div class="uk-panel">
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
                             </div>
                         </div>
-                    </td>
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
 				<td class="sportsbook-panel">
-                        <div class="uk-panel">
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
-                            </div>
-                            <div class="odds-sb-bookline">
-                                <div class="uk-background-muted sb-bookline-extlink">
-                                    <span class="uk-text-muted uk-text-small">N/A</span>
-                                </div>
+                    <div class="uk-panel">
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
                             </div>
                         </div>
-                    </td>
+                        <div class="odds-sb-bookline">
+                            <div class="uk-background-muted sb-bookline-extlink">
+                                <span class="uk-text-muted uk-text-small">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
 			  
 			{{/if}}
 			
@@ -280,29 +292,33 @@ function formatDate(date) {
 			<script id="oddsRowTemplate" type="text/x-jQuery-tmpl">
 			
 			 <tr>
-                <td class="team-panel">
-                                    <div class="uk-panel">
-                        <div class="odds-away">
-                            <div class="odds-away-team">
-                                <img class="odds-away-team-img" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%200%2024&#039;%3E%3C/svg%3E" height="24" alt="${away_name}" class="perfmatters-lazy" data-src="${away_url}" loading="lazy" /><noscript><img src="${away_url}" height="24" alt="${away_name}"></noscript>
-                                <span>${away_name}</span>                            </div>
-                            <div class="odds-away-score">${away_score}</div>
-                        </div>
-                        <div class="odds-home">
-                            <div class="odds-home-team">
-                                <img class="odds-home-team-img" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%200%2024&#039;%3E%3C/svg%3E" height="24" alt="${home_name}" class="perfmatters-lazy" data-src="${home_url}" loading="lazy" /><noscript><img src="${home_url}" height="24" alt="${home_name}"></noscript>
-                                <span>${home_name}</span>                                
+                <td>
+                    <div class="team-panel">
+                        <div class="uk-panel">
+                            <div class="odds-away">
+                                <div class="odds-away-team">
+                                    <img class="odds-away-team-img" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%200%2024&#039;%3E%3C/svg%3E" height="24" alt="${away_name}" class="perfmatters-lazy" data-src="${away_url}" loading="lazy" /><noscript><img src="${away_url}" height="24" alt="${away_name}"></noscript>
+                                    <span>${away_name}</span>                            </div>
+                                <div class="odds-away-score">${away_score}</div>
                             </div>
-                            <div class="odds-home-score">${home_score}</div>
+                            <div class="odds-home">
+                                <div class="odds-home-team">
+                                    <img class="odds-home-team-img" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%200%2024&#039;%3E%3C/svg%3E" height="24" alt="${home_name}" class="perfmatters-lazy" data-src="${home_url}" loading="lazy" /><noscript><img src="${home_url}" height="24" alt="${home_name}"></noscript>
+                                    <span>${home_name}</span>                                
+                                </div>
+                                <div class="odds-home-score">${home_score}</div>
+                            </div>
                         </div>
                     </div>
                 </td>
                 <td class="consensus-panel">
-                                    <div class="uk-panel">
+                    <div class="uk-panel">
                         <div class="odds-consensus">
-                        ${away_consensus}                       </div>
+                            ${away_consensus}
+                        </div>
                         <div class="odds-consensus">
-                        ${home_consensus}                        </div>
+                            ${home_consensus}
+                        </div>
                     </div>
                 </td>
 				
@@ -311,9 +327,12 @@ function formatDate(date) {
                  </tr>
 				 
 				 <tr class="schedule-row">
-					<td colspan="2" class="schedule-panel">
-					${date_time} | Status: ${status}                </td>
-					<td colspan="8" class="uk-text-right">&nbsp;</td>
+					<td colspan="1" class="schedule-panel">
+					   <div>${date_time} | Status: ${status}</div>
+                    </td>
+					<td colspan="6">
+                        <div>&nbsp;</div>
+                    </td>
 				</tr>
 			
 			</script>
@@ -366,7 +385,7 @@ function formatDate(date) {
 				  // check that the game has odds array
 				  if(gameData.PregameOdds && gameData.PregameOdds.length > 0) {
 				  				
-					bookStr = "DraftKings FanDuel Parx ParxPA BetRivers RiversCasinoPA PointsBet";
+					bookStr = "DraftKings FanDuel Parx ParxPA BetRivers RiversCasinoPA UnibetNJ";
 								
 					// loop through Pregame odds
 					for(var i = 0; i < gameData.PregameOdds.length; i++) {

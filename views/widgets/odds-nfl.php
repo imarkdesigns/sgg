@@ -16,7 +16,7 @@ $team_request = wp_remote_get( 'https://api.sportsdata.io/v3/nfl/scores/json/tea
 $teams_json = wp_remote_retrieve_body( $team_request );
 $team_body = json_decode( $teams_json );
 
-$sportsbooks = [ 'DraftKings', 'FanDuel', 'Parx', 'BetRivers', 'PointsBet' ];
+$sportsbooks = [ 'DraftKings', 'FanDuel', 'Parx', 'BetRivers', 'Unibet' ];
 
 ?>
 
@@ -49,18 +49,17 @@ function updateOddsWeek(oType) {
 ?>
 
 <div uk-grid class="uk-flex-between uk-flex-middle uk-margin-bottom odds-locations">
-    <div class="uk-width-expand">
+    <div class="uk-width-expand@m">
         <ul class="uk-subnav uk-subnav-pill uk-subnav-divider odds-localnav" uk-margin>
             <li class="uk-active"><a href="<?php echo esc_url( site_url('nfl/odds-betting-lines') ); ?>">NFL</a></li>
             <li><a href="<?php echo esc_url( site_url('nba/odds-betting-lines') ); ?>">NBA</a></li>
             <li><a href="<?php echo esc_url( site_url('mlb/odds-betting-lines') ); ?>">MLB</a></li>
         </ul>
     </div>
-    <div class="uk-width-auto">
+    <div class="uk-width-auto@m">
         <select class="uk-select" name="oddsLocation">
             <option selected disabled>Choose Betting Location</option>
             <option value="Pennsylvania">Pennsylvania</option>
-            <option value="New Jersey">New Jersey</option>
         </select>
     </div>
 </div>
@@ -118,26 +117,41 @@ function updateOddsWeek(oType) {
 
             <thead>
                 <tr>
-                    <th class="team-label"><?php echo $leagueName; ?></th>
-                    <th><span>Consensus</span></th>
+                    <th>
+                        <div class="team-label">
+                            <?php echo $leagueName; ?>
+                        </div>
+                    </th>
+                    <th width="120"><span>Consensus</span></th>
                     <?php for ( $sb = 0; $sb < count($sportsbooks); $sb++ ) {
-                        // echo '<th>'. $sportsbooks[$sb] .'</th>';
 
                         if ( $sportsbooks[$sb] == 'BetRivers' ) {
-                            echo '<th> <img src="'._uri.'/resources/images/sportsbooks/betrivers.jpg" width="120" height="40" alt="BetRivers"> </th>';
+                            $url = 'https://wlsugarhouseaffiliates.adsrv.eacdn.com/C.ashx?btag=a_3320b_380c_&affid=947&siteid=3320&adid=380&c=';
+                            $img = '<a href="'.$url.'" target="_blank"><img src="'._uri.'/resources/images/sportsbooks/betrivers.jpg" width="120" height="40" alt="BetRivers"></a>';
+                            $sb1 = '<th width="120"><span>'.$img.'</span></th>';
+
+                            echo $sb1;
+
+                        } elseif ( $sportsbooks[$sb] == 'Unibet' ) {
+                            $url = 'https://pa.unibet.com/sportsbook-welcome';
+                            $img = '<a href="'.$url.'" target="_blank"><img src="'._uri.'/resources/images/sportsbooks/unibet.jpg" width="120" height="40" alt="UnibetNJ"></a>';
+                            $sb2 = '<th width="120"><span>'.$img.'</span></th>';
+
+                            echo $sb2; 
+
                         } else {
-                            echo '<th><span>'. $sportsbooks[$sb] .'</span></th>';                            
+                            echo '<th width="120"><span>'. $sportsbooks[$sb] .'</span></th>';
                         }
 
                     } ?>
                 </tr>
             </thead>
-
             <tbody id="odds-list-body">
                 <?php foreach ( $gameoddsbydate_body as $gameodd ) : ?>
                 <tr>
-                    <td class="team-panel">
-                    <?php foreach ( $team_body as $team ) {
+                    <td>
+                        <div class="team-panel">
+                        <?php foreach ( $team_body as $team ) {
 
                             if ( $gameodd->AwayTeamId != $team->TeamID )
                                 continue;
@@ -145,32 +159,32 @@ function updateOddsWeek(oType) {
                                 $AwayTeamName = $team->Name;
                                 $AwayTeamLogo = $team->WikipediaLogoUrl;
 
-                        }
+                            }
 
-                        foreach ( $team_body as $team ) {
+                            foreach ( $team_body as $team ) {
 
-                            if ( $gameodd->HomeTeamId != $team->TeamID )
-                                continue;
+                                if ( $gameodd->HomeTeamId != $team->TeamID )
+                                    continue;
 
-                                $HomeTeamName = $team->Name;
-                                $HomeTeamLogo = $team->WikipediaLogoUrl;
+                                    $HomeTeamName = $team->Name;
+                                    $HomeTeamLogo = $team->WikipediaLogoUrl;
 
-                        } ?>                    
-                        <div class="uk-panel">
-                            <div class="odds-away">
-                                <div class="odds-away-team">
-                                    <img src="<?php echo esc_url($AwayTeamLogo); ?>" height="24" alt="<?php echo $AwayTeamName; ?>">
-                                    <?php echo $AwayTeamName; ?>
+                            } ?>
+                            <div class="uk-panel">
+                                <div class="odds-away">
+                                    <div class="odds-away-team">
+                                        <img src="<?php echo esc_url($AwayTeamLogo); ?>" height="24" alt="<?php echo $AwayTeamName; ?>">
+                                        <?php echo $AwayTeamName; ?>
+                                    </div>
+                                    <div class="odds-away-score"><?php echo ( $gameodd->AwayTeamScore ) ? $gameodd->AwayTeamScore : '' ; ?></div>
                                 </div>
-                                <div class="odds-away-score"><?php echo ( $gameodd->AwayTeamScore ) ? $gameodd->AwayTeamScore : '' ; ?></div>
-                            </div>
-                            <div class="odds-home">
-                                <div class="odds-home-team">
-                                    <img src="<?php echo esc_url($HomeTeamLogo); ?>" height="24" alt="<?php echo $HomeTeamName; ?>">
-                                    <?php echo $HomeTeamName; ?>
-                                    
+                                <div class="odds-home">
+                                    <div class="odds-home-team">
+                                        <img src="<?php echo esc_url($HomeTeamLogo); ?>" height="24" alt="<?php echo $HomeTeamName; ?>">
+                                        <?php echo $HomeTeamName; ?>
+                                    </div>
+                                    <div class="odds-home-score"><?php echo ( $gameodd->HomeTeamScore ) ? $gameodd->HomeTeamScore : '' ; ?></div>
                                 </div>
-                                <div class="odds-home-score"><?php echo ( $gameodd->HomeTeamScore ) ? $gameodd->HomeTeamScore : '' ; ?></div>
                             </div>
                         </div>
                     </td>
@@ -211,8 +225,8 @@ function updateOddsWeek(oType) {
                     </td>
                     <?php if ( !empty($gameodd->PregameOdds) ) : 
                     foreach ( $gameodd->PregameOdds as $pregameodds ) :
-                    
-                    		if ( $pregameodds->Sportsbook == 'RiversCasinoPA' ) : ?>
+
+                        if ( $pregameodds->Sportsbook == 'RiversCasinoPA' ) : ?>
 
                             <td class="sportsbook-panel">
                                 <div class="uk-panel">
@@ -247,14 +261,49 @@ function updateOddsWeek(oType) {
                                 </div>
                             </td>                            
 
+                        <?php elseif ( $pregameodds->Sportsbook == 'UnibetNJ' ) : ?>
+
+                            <td class="sportsbook-panel">
+                                <div class="uk-panel">
+                                    <div class="odds-sb-bookline">
+                                        <a href="https://wlkindred.adsrv.eacdn.com/C.ashx?btag=a_783b_150c_&affid=195&siteid=783&adid=150&c=" target="_blank">
+                                            <span class="sb-bookline-extlink">
+                                                <span>
+                                                    <?php echo ($pregameodds->AwayPointSpread < 0) ? $pregameodds->AwayPointSpread : '+'.$pregameodds->AwayPointSpread; ?>
+                                                    <small class="uk-margin-small-left"><?php echo $pregameodds->AwayPointSpreadPayout ?></small>
+                                                </span>
+                                                <span class="sb-extlink-hover">
+                                                    <svg viewBox="0 0 24 24" width="15" height="15" xmlns="https://www.w3.org/2000/svg" class="" fill="#F7F8FD"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path></svg>
+                                                    <span>Bet Now</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="odds-sb-bookline">
+                                        <a href="https://wlkindred.adsrv.eacdn.com/C.ashx?btag=a_783b_150c_&affid=195&siteid=783&adid=150&c=" target="_blank">
+                                            <span class="sb-bookline-extlink">
+                                                <span>
+                                                    <?php echo ($pregameodds->HomePointSpread < 0) ? $pregameodds->HomePointSpread : '+'.$pregameodds->HomePointSpread; ?>
+                                                    <small class="uk-margin-small-left"><?php echo $pregameodds->HomePointSpreadPayout ?></small>
+                                                </span>
+                                                <span class="sb-extlink-hover">
+                                                    <svg viewBox="0 0 24 24" width="15" height="15" xmlns="https://www.w3.org/2000/svg" class="" fill="#F7F8FD"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path></svg>
+                                                    <span>Bet Now</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+
                         <?php else :
 
-                        preg_match( '/NJ|Consensus|SugarHouse|Bookmaker|MGM/', $pregameodds->Sportsbook, $matches );
+                        preg_match( '/888|PointsBet|Consensus|SugarHouse|Bookmaker|MGM/', $pregameodds->Sportsbook, $matches );
                         if ( empty($matches) ) : ?>
                         <td class="sportsbook-panel">
                             <div class="uk-panel">
                                 <div class="odds-sb-bookline">
-                                    <a href="#" target="_blank">
+                                    <a>
                                         <span class="sb-bookline-extlink">
                                             <span>
                                                 <?php echo ($pregameodds->AwayPointSpread < 0) ? $pregameodds->AwayPointSpread : '+'.$pregameodds->AwayPointSpread; ?>
@@ -268,7 +317,7 @@ function updateOddsWeek(oType) {
                                     </a>
                                 </div>
                                 <div class="odds-sb-bookline">
-                                    <a href="#" target="_blank">
+                                    <a>
                                         <span class="sb-bookline-extlink">
                                             <span>
                                                 <?php echo ($pregameodds->HomePointSpread < 0) ? $pregameodds->HomePointSpread : '+'.$pregameodds->HomePointSpread; ?>
@@ -284,9 +333,9 @@ function updateOddsWeek(oType) {
                             </div>
                         </td>                      
                         <?php endif; // End preg_match();
-
-						endif; // End if BetRivers
-	                        
+                            
+                        endif; // End if BetRivers
+                            
                     endforeach; // End foreach();
 
                     else : 
@@ -309,15 +358,17 @@ function updateOddsWeek(oType) {
                     endif; ?>
                 </tr>
                 <tr class="schedule-row">
-                    <td colspan="2" class="schedule-panel">
-                    <?php 
+                    <td colspan="1" class="schedule-panel">
+                    <?php
                         $date_set = strtotime($gameodd->DateTime);
                         $date_set = date('D n/d, g:i A', $date_set);
 
-                        echo $date_set.' | Status: '. $gameodd->Status;
-                        ?>
+                        echo '<div>'. $date_set .'| Status: '. $gameodd->Status .'</div>';
+                    ?>
                     </td>
-                    <td colspan="8" class="uk-text-right">&nbsp;</td>
+                    <td colspan="6">
+                        <div>&nbsp;</div>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
