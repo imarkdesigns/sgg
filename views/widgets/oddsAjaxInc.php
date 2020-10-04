@@ -400,7 +400,7 @@ function formatDate(date) {
 
 					var sportsbooks = [ 'RiversCasinoPA', 'UnibetNJ', 'DraftKings',  'FanDuel', 'ParxPA' ];
 					sportsbooks.forEach(sportsbook => {
-						if (available.includes(sportsbook)) {
+						// if (available.includes(sportsbook)) {
 							for(var i = 0; i < gameData.PregameOdds.length; i++) {
 								if (gameData.PregameOdds[i].Sportsbook == sportsbook) {
 									var oddsBookItem = {};
@@ -411,10 +411,16 @@ function formatDate(date) {
 									oddsBookItem.home_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, true));
 									
 									oddsData.odds_book.push(oddsBookItem);
-									break;
+								} else {
+									var oddsBookItem = {};
+									oddsBookItem.sportsbook = gameData.PregameOdds[i].Sportsbook;
+									oddsBookItem.away_odds = 'N/A';
+									oddsBookItem.home_odds = 'N/A';
+									oddsBookItem.away_payout = '';
+									oddsBookItem.home_payout = '';
 								}
 							}
-						}
+						// }
 					});
 					
 				  } // end odds array check

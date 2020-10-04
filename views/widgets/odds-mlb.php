@@ -48,14 +48,17 @@ $sportsbooks = [
 $available = [];
 
 if ( isset( $gameoddsbydate_body ) && count( $gameoddsbydate_body ) > 0 ) {
-    $single = $gameoddsbydate_body[0];
-    if ( isset( $single->PregameOdds ) && 
-        is_array( $single->PregameOdds ) &&
-        count( $single->PregameOdds ) > 0 )  {
-        $odds = $single->PregameOdds;
-        if ( is_array( $odds ) && count ( $odds ) > 0 ) {
-            foreach ( $odds as $odd ) {
-                $available[] = $odd->Sportsbook;
+    foreach ( $gameoddsbydate_body as $single ) {
+        if ( isset( $single->PregameOdds ) && 
+            is_array( $single->PregameOdds ) &&
+            count( $single->PregameOdds ) > 0 )  {
+            $odds = $single->PregameOdds;
+            if ( is_array( $odds ) && count ( $odds ) > 0 ) {
+                foreach ( $odds as $odd ) {
+                    if ( ! in_array( $odd->Sportsbook, $available ) ) {
+                        $available[] = $odd->Sportsbook;
+                    }
+                }
             }
         }
     }
@@ -85,9 +88,27 @@ function bookline( $spread, $payout, $link, $sportsbook ) {
         </span>
     </a>
 </div>
-<?php } ?>
+<?php } 
 
-<?php 
+function naBookline() {
+?>
+<td class="sportsbook-panel">
+    <div class="uk-panel">
+        <div class="odds-sb-bookline">
+            <div class="uk-background-muted sb-bookline-extlink">
+                <span class="uk-text-muted uk-text-small">N/A</span>
+            </div>
+        </div>
+        <div class="odds-sb-bookline">
+            <div class="uk-background-muted sb-bookline-extlink">
+                <span class="uk-text-muted uk-text-small">N/A</span>
+            </div>
+        </div>
+    </div>
+</td>
+<?php
+}
+
 function sportsbookPanel( $odds, $sportsbook ) { 
     $link = ( isset( $sportsbook['link'] ) ) ? $sportsbook['link'] : '';
 ?>
@@ -205,7 +226,7 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
                     </th>
                     <th width="120"><span>Consensus</span></th>
                     <?php foreach ( $sportsbooks as $sportsbookHeading ) : 
-                        if ( in_array( $sportsbookHeading['id'], $available ) ) : ?>
+                        // if ( in_array( $sportsbookHeading['id'], $available ) ) : ?>
                         <th width="120">
                             <span>
                                 <?php if ( isset( $sportsbookHeading['link'] ) ) : ?>
@@ -223,7 +244,7 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
                                 <?php endif; ?>
                             </span>
                         </th>
-                        <?php endif;
+                        <?php // endif;
                     endforeach; ?>
                 </tr>
             </thead>
@@ -285,11 +306,16 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
                     if ( ! empty( $gameodd->PregameOdds ) ) : 
                         foreach ( $sportsbooks as $sportbookItem ) :
                             if ( in_array( $sportsbookItem['id'], $available ) ) :
+                                $found = false;
                                 foreach ( $gameodd->PregameOdds as $odds) :
                                     if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
+                                        $found = true;
                                         sportsbookPanel( $odds, $sportsbookItem );
                                     endif;
                                 endforeach;
+                                if ( ! $found ) {
+                                    naBookline();
+                                }
                             endif;
                         endforeach;
                     
