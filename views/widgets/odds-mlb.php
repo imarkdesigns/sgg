@@ -305,7 +305,7 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
                     <?php 
                     if ( ! empty( $gameodd->PregameOdds ) ) : 
                         foreach ( $sportsbooks as $sportbookItem ) :
-                            if ( in_array( $sportsbookItem['id'], $available ) ) :
+                            // if ( in_array( $sportsbookItem['id'], $available ) ) :
                                 $found = false;
                                 foreach ( $gameodd->PregameOdds as $odds) :
                                     if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
@@ -316,7 +316,7 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
                                 if ( ! $found ) {
                                     naBookline();
                                 }
-                            endif;
+                            // endif;
                         endforeach;
                     
                     else : 

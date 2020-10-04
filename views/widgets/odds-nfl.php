@@ -320,7 +320,7 @@ function updateOddsWeek(oType) {
                     <?php 
                     if ( ! empty( $gameodd->PregameOdds ) ) : 
                         foreach ( $sportsbooks as $sportsbookItem ) :
-                            if ( in_array( $sportsbookItem['id'], $available ) ) :
+                            // if ( in_array( $sportsbookItem['id'], $available ) ) :
                                 $found = false;
                                 foreach ( $gameodd->PregameOdds as $odds) :
                                     if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
@@ -331,7 +331,7 @@ function updateOddsWeek(oType) {
                                 if ( ! $found ) {
                                     naBookline();
                                 }
-                            endif;
+                            // endif;
                         endforeach;
                     
                     else : 
