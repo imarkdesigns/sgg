@@ -388,32 +388,34 @@ function formatDate(date) {
 					bookStr = "DraftKings FanDuel Parx ParxPA BetRivers RiversCasinoPA UnibetNJ";
 								
 					// loop through Pregame odds
+					let available = [];
+
 					for(var i = 0; i < gameData.PregameOdds.length; i++) {
-					
+						available.push(gameData.PregameOdds[i].Sportsbook);
 						if(gameData.PregameOdds[i].Sportsbook == "Consensus") {
-							
 							oddsData.away_consensus = getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, false);
 							oddsData.home_consensus = getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, false);
-							
-						} else {
-							
-							if(bookStr.includes(gameData.PregameOdds[i].Sportsbook)) {
-								
-								var oddsBookItem = {};
-								
-								oddsBookItem.sportsbook = gameData.PregameOdds[i].Sportsbook;
-								
-								oddsBookItem.away_odds = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, false));
-								oddsBookItem.home_odds = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, false));
-								oddsBookItem.away_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, true));
-								oddsBookItem.home_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, true));
-								
-								oddsData.odds_book.push(oddsBookItem);
-								
+						} 
+					}
+
+					var sportsbooks = [ 'RiversCasinoPA', 'UnibetNJ', 'DraftKings',  'FanDuel', 'ParxPA' ];
+					sportsbooks.forEach(sportsbook => {
+						if (available.includes(sportsbook)) {
+							for(var i = 0; i < gameData.PregameOdds.length; i++) {
+								if (gameData.PregameOdds[i].Sportsbook == sportsbook) {
+									var oddsBookItem = {};
+									oddsBookItem.sportsbook = gameData.PregameOdds[i].Sportsbook;
+									oddsBookItem.away_odds = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, false));
+									oddsBookItem.home_odds = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, false));
+									oddsBookItem.away_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, true));
+									oddsBookItem.home_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, true));
+									
+									oddsData.odds_book.push(oddsBookItem);
+									break;
+								}
 							}
 						}
-
-					}
+					});
 					
 				  } // end odds array check
 				  
