@@ -57,10 +57,20 @@ function updateOddsWeek(oType) {
         </ul>
     </div>
     <div class="uk-width-auto@m">
+        <?php /*
         <select class="uk-select" name="oddsLocation">
             <option selected disabled>Choose Betting Location</option>
             <option value="Pennsylvania">Pennsylvania</option>
         </select>
+        */ ?>
+        <div class="button-select-wrapper">
+            <button type="button" class="uk-button uk-button-outline">Choose Betting Location</button>
+            <div uk-dropdown="mode: click">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a rel="noopener">Pennsylvania</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,10 +1,19 @@
 <div class="uk-card uk-card-default uk-card-body" data-card="sportsbooks">
     <div class="uk-flex uk-flex-between">
         <h1 class="uk-card-title">Best Sportsbooks</h1>
-        <div>
+        <div class="button-select-wrapper">
+            <?php /*
             <select name="" id="" class="uk-select uk-width-medium">
-                <option value="">Pennsylvania</option>
+                <option value="pennsylvania">Pennsylvania</option>
             </select>
+            */ ?>
+            
+            <button type="button" class="uk-button uk-button-outline">Choose Betting Location</button>
+            <div uk-dropdown="mode: click">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a rel="noopener">Pennsylvania</a></li>
+                </ul>
+            </div>
         </div>    
     </div>
     

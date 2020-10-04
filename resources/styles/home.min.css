@@ -22,17 +22,55 @@
 
 [data-card=sportsbooks] .uk-flex {
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
-[data-card=sportsbooks] .uk-flex div {
-  max-width: 200px;
-  width: 100%;
-  margin-top: -15px;
-  margin-bottom: 15px;
+[data-card=sportsbooks] .uk-flex h1 {
+  margin-bottom: 0;
 }
-@media (min-width: 960px) {
-  [data-card=sportsbooks] .uk-flex div {
-    margin-top: 0;
-    margin-bottom: 0;
+[data-card=sportsbooks] .uk-flex .button-select-wrapper {
+  position: relative;
+  margin-top: 15px;
+}
+[data-card=sportsbooks] .uk-flex .uk-button-outline {
+  background: #FFF url(../images/ui/arrow-down.png) no-repeat 95% center/8px auto;
+  text-align: left;
+  text-transform: capitalize;
+  line-height: normal;
+  min-width: 225px;
+  height: 35px;
+  padding: 0 12px;
+  border: 1px solid #E1E2E9;
+  border-radius: 3px;
+}
+[data-card=sportsbooks] .uk-flex .uk-button-outline:focus, [data-card=sportsbooks] .uk-flex .uk-button-outline:hover {
+  border-color: #00A305;
+}
+[data-card=sportsbooks] .uk-flex .uk-button-outline.uk-open {
+  border-radius: 3px 3px 0 0;
+}
+[data-card=sportsbooks] .uk-flex .uk-dropdown {
+  width: 225px;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 0 3px 3px;
+  border: 1px solid #E1E2E9;
+  overflow: hidden;
+  z-index: 1;
+}
+[data-card=sportsbooks] .uk-flex .uk-dropdown li > a {
+  padding: 12px;
+  transition: 300ms ease-in-out;
+}
+[data-card=sportsbooks] .uk-flex .uk-dropdown li > a:focus, [data-card=sportsbooks] .uk-flex .uk-dropdown li > a:hover {
+  background: #00A305;
+  color: #FFF;
+}
+@media (min-width: 640px) {
+  [data-card=sportsbooks] .uk-flex .uk-button-outline {
+    width: 200px;
+  }
+  [data-card=sportsbooks] .uk-flex .button-select-wrapper {
+    margin-top: -4px;
   }
 }
 [data-card=sportsbooks] .sportsbooks-lists {

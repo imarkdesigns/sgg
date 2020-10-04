@@ -924,6 +924,17 @@
 		"opt": 1,
 		"q": 100
 		},
+	"/resources/images/ui/arrow-down.png": {
+		"ft": 32768,
+		"iS": 279,
+		"oA": 0,
+		"oAP": "/resources/images/ui/arrow-down.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/resources/scripts/inc/betting-odds.js": {
 		"bF": 0,
 		"ft": 64,
@@ -986,28 +997,6 @@
 		"mi": 1,
 		"oA": 0,
 		"oAP": "/resources/scripts/main.min.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"/resources/scripts/market.min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/resources/scripts/market.min.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"/resources/scripts/markettype.min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/resources/scripts/markettype.min.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0

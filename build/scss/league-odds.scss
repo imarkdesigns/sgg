@@ -27,12 +27,70 @@
         }
     }
 
-    .uk-select {
-        background: transparent;
-        font-size: 14px;
-        min-width: 250px !important;
-        max-width: 300px;
-        border: 1px solid $sgg-line;
+    .button-select-wrapper {
+        position: relative;
+        margin-top: 0;
     }
+
+    .uk-button-outline {
+        background: #FFF url(#{$img}/ui/arrow-down.png) no-repeat 95% center / 8px auto;
+        text-align: left;
+        text-transform: capitalize;
+        line-height: normal;
+        min-width: 225px;
+        height: 35px;
+        padding: 0 12px;
+        border: 1px solid $sgg-line;
+        border-radius: 3px;
+
+        &:focus,
+        &:hover {
+            border-color: $sgg-green;
+        }
+
+        &.uk-open {
+            border-radius: 3px 3px 0 0;
+        }
+    }
+
+    .uk-dropdown {
+        width: 225px;
+        margin: 0;
+        padding: 0;
+        border-radius: 0 0 3px 3px;
+        border: 1px solid $sgg-line;
+        overflow: hidden;
+        z-index: 1;
+
+        li > a {
+            padding: 12px;
+            transition: 300ms ease-in-out;
+
+            &:focus,
+            &:hover {
+                background: $sgg-green;
+                color: #FFF;
+            }
+        }
+    }
+
+    @media ( min-width: 640px ) {
+
+        .uk-button-outline {
+            width: 200px;
+        }
+
+        .button-select-wrapper {
+            margin-top: 0;
+        }
+
+    }
+    // .uk-select {
+    //     background: transparent;
+    //     font-size: 14px;
+    //     min-width: 250px !important;
+    //     max-width: 300px;
+    //     border: 1px solid $sgg-line;
+    // }
 
 } // end of locations

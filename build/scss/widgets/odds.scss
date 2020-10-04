@@ -72,6 +72,10 @@
         white-space: nowrap;
     }
 
+    thead {
+        border-bottom: 2px solid $sgg-line;
+    }
+
     thead th {
         position: sticky;
         top: 0;
@@ -117,6 +121,7 @@
         img {
             display: block;
             @include size(120px,40px);
+            min-width: 120px;
             border: 1px solid $sgg-line;
             border-radius: 3px;
         }
@@ -195,8 +200,13 @@
             font-size: 12px;
             height: 50px;
 
-            a {
+            a,
+            a[href] {
                 color: #444;
+                
+                .sb-bookline-extlink {
+                    border-color: $sgg-line !important;
+                }
             }
         }
 
@@ -208,7 +218,8 @@
             width: 120px;
             height: 46px;
             border-radius: 3px;
-            border: 1px solid $sgg-line;
+            border: 1px solid;
+            border-color: $sgg-line;
             overflow: hidden;
 
             &.uk-background-muted {

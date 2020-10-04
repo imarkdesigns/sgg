@@ -61,10 +61,20 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
         </ul>
     </div>
     <div class="uk-width-auto@m">
+        <?php /*
         <select class="uk-select" name="oddsLocation">
             <option selected disabled>Choose Betting Location</option>
             <option value="Pennsylvania">Pennsylvania</option>
         </select>
+        */ ?>
+        <div class="button-select-wrapper">
+            <button type="button" class="uk-button uk-button-outline">Choose Betting Location</button>
+            <div uk-dropdown="mode: click">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a rel="noopener">Pennsylvania</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>        
 
@@ -101,7 +111,11 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
 
             <thead>
                 <tr>
-                    <th class="team-label"><?php echo $leagueName; ?></th>
+                    <th>
+                        <div class="team-label">
+                            <?php echo $leagueName; ?>
+                        </div>
+                    </th>
                     <th width="120"><span>Consensus</span></th>
                     <?php for ( $sb = 0; $sb < count($sportsbooks); $sb++ ) {
                         // echo '<th>'. $sportsbooks[$sb] .'</th>';
