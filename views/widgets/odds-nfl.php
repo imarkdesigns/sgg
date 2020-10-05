@@ -131,7 +131,7 @@ function consensusPanel( $single ) {
 <script type="text/javascript">
 // variables for saving the state of the page
 var responseGameOdds = <?php echo $gameoddsbydate_body_json; ?>;
-var teamsObj =  <?php echo $teams_json; ?>;
+var teamsObj = <?php echo $teams_json; ?>;
 var teamsHashByID = {};
 var oddsType = "Spread";
 
@@ -240,8 +240,7 @@ function updateOddsWeek(oType) {
                         </div>
                     </th>
                     <th width="120"><span>Consensus</span></th>
-                    <?php foreach ( $sportsbooks as $sportsbookHeading ) : 
-                        // if ( in_array( $sportsbookHeading['id'], $available ) ) : ?>
+                    <?php foreach ( $sportsbooks as $sportsbookHeading ) : ?>
                         <th width="120">
                             <span>
                                 <?php if ( isset( $sportsbookHeading['link'] ) ) : ?>
@@ -259,8 +258,7 @@ function updateOddsWeek(oType) {
                                 <?php endif; ?>
                             </span>
                         </th>
-                        <?php // endif;
-                    endforeach; ?>
+                    <?php endforeach; ?>
                 </tr>
             </thead>
             <tbody id="odds-list-body">
@@ -269,7 +267,8 @@ function updateOddsWeek(oType) {
                 <tr>
                     <td>
                         <div class="team-panel">
-                        <?php foreach ( $team_body as $team ) {
+                        <?php if ( isset( $team_body ) ) : ?>
+                            <?php foreach ( $team_body as $team ) {
 
                             if ( $gameodd->AwayTeamId != $team->TeamID )
                                 continue;
@@ -304,6 +303,7 @@ function updateOddsWeek(oType) {
                                     <div class="odds-home-score"><?php echo ( $gameodd->HomeTeamScore ) ? $gameodd->HomeTeamScore : '' ; ?></div>
                                 </div>
                             </div>
+                        <?php endif; ?>
                         </div>
                     </td>
                     <td class="consensus-panel">
@@ -320,25 +320,23 @@ function updateOddsWeek(oType) {
                     <?php 
                     if ( ! empty( $gameodd->PregameOdds ) ) : 
                         foreach ( $sportsbooks as $sportsbookItem ) :
-                            // if ( in_array( $sportsbookItem['id'], $available ) ) :
-                                $found = false;
-                                foreach ( $gameodd->PregameOdds as $odds) :
-                                    if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
-                                        $found = true;
-                                        sportsbookPanel( $odds, $sportsbookItem );
-                                    endif;
-                                endforeach;
-                                if ( ! $found ) {
-                                    naBookline();
-                                }
-                            // endif;
+                            $found = false;
+                            foreach ( $gameodd->PregameOdds as $odds) :
+                                if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
+                                    $found = true;
+                                    sportsbookPanel( $odds, $sportsbookItem );
+                                endif;
+                            endforeach;
+                            if ( ! $found ) {
+                                naBookline();
+                            }
                         endforeach;
                     
                     else : 
                         foreach ( $sportsbooks as $sportsbookTemp ) : 
-                            if ( in_array( $sportsbookTemp['id'], $available ) ) : ?>
-                                
-                            <?php endif;
+                            if ( in_array( $sportsbookTemp['id'], $available ) ) {
+                                naBookline();
+                            }
                         endforeach;
                     endif; ?>
                 </tr>

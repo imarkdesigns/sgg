@@ -143,7 +143,7 @@ function consensusPanel( $single ) {
 <script type="text/javascript">
 // variables for saving the state of the page
 var responseGameOdds = <?php echo $gameoddsbydate_body_json; ?>;
-var teamsObj =  <?php echo $teams_json; ?>;
+var teamsObj = <?php echo $teams_json; ?>;
 var teamsHashByID = {};
 var currentDate = new Date("<?php echo $currentDate; ?>");
 var oddsType = "Spread";
@@ -226,8 +226,7 @@ var headerValue = "14ab1b17eede492d8996908963d2ebbd";
                         </div>
                     </th>
                     <th width="120"><span>Consensus</span></th>
-                    <?php foreach ( $sportsbooks as $sportsbookHeading ) : 
-                        // if ( in_array( $sportsbookHeading['id'], $available ) ) : ?>
+                    <?php foreach ( $sportsbooks as $sportsbookHeading ) : ?>
                         <th width="120">
                             <span>
                                 <?php if ( isset( $sportsbookHeading['link'] ) ) : ?>
@@ -245,68 +244,69 @@ var headerValue = "14ab1b17eede492d8996908963d2ebbd";
                                 <?php endif; ?>
                             </span>
                         </th>
-                        <?php //endif;
-                    endforeach; ?>
+                        <?php endforeach; ?>
                 </tr>
             </thead>
 
             <tbody id="odds-list-body">
-                <?php foreach ( $gameoddsbydate_body as $gameodd ) : ?>
-                <tr>
-                    <td>
-                        <div class="team-panel">
-                        <?php foreach ( $team_body as $team ) {
+                <?php if ( $gameoddsbydate_body ) : ?>
+                    <?php foreach ( $gameoddsbydate_body as $gameodd ) : ?>
+                    <tr>
+                        <td>
+                            <div class="team-panel">
+                            <?php if ( $team_body ) : ?>
+                                <?php foreach ( $team_body as $team ) {
 
-                            if ( $gameodd->AwayTeamId != $team->TeamID )
-                                continue;
+                                    if ( $gameodd->AwayTeamId != $team->TeamID )
+                                        continue;
 
-                                $AwayTeamName = $team->Name;
-                                $AwayTeamLogo = $team->WikipediaLogoUrl;
+                                        $AwayTeamName = $team->Name;
+                                        $AwayTeamLogo = $team->WikipediaLogoUrl;
 
-                            }
+                                    }
 
-                            foreach ( $team_body as $team ) {
+                                    foreach ( $team_body as $team ) {
 
-                                if ( $gameodd->HomeTeamId != $team->TeamID )
-                                    continue;
+                                        if ( $gameodd->HomeTeamId != $team->TeamID )
+                                            continue;
 
-                                    $HomeTeamName = $team->Name;
-                                    $HomeTeamLogo = $team->WikipediaLogoUrl;
+                                            $HomeTeamName = $team->Name;
+                                            $HomeTeamLogo = $team->WikipediaLogoUrl;
 
-                            } ?>
-                            <div class="uk-panel">
-                                <div class="odds-away">
-                                    <div class="odds-away-team">
-                                        <img src="<?php echo esc_url($AwayTeamLogo); ?>" height="24" alt="<?php echo $AwayTeamName; ?>">
-                                        <?php echo $AwayTeamName; ?>
+                                    } ?>
+                                    <div class="uk-panel">
+                                        <div class="odds-away">
+                                            <div class="odds-away-team">
+                                                <img src="<?php echo esc_url($AwayTeamLogo); ?>" height="24" alt="<?php echo $AwayTeamName; ?>">
+                                                <?php echo $AwayTeamName; ?>
+                                            </div>
+                                            <div class="odds-away-score"><?php echo ( $gameodd->AwayTeamScore ) ? $gameodd->AwayTeamScore : '' ; ?></div>
+                                        </div>
+                                        <div class="odds-home">
+                                            <div class="odds-home-team">
+                                                <img src="<?php echo esc_url($HomeTeamLogo); ?>" height="24" alt="<?php echo $HomeTeamName; ?>">
+                                                <?php echo $HomeTeamName; ?>
+                                            </div>
+                                            <div class="odds-home-score"><?php echo ( $gameodd->HomeTeamScore ) ? $gameodd->HomeTeamScore : '' ; ?></div>
+                                        </div>
                                     </div>
-                                    <div class="odds-away-score"><?php echo ( $gameodd->AwayTeamScore ) ? $gameodd->AwayTeamScore : '' ; ?></div>
-                                </div>
-                                <div class="odds-home">
-                                    <div class="odds-home-team">
-                                        <img src="<?php echo esc_url($HomeTeamLogo); ?>" height="24" alt="<?php echo $HomeTeamName; ?>">
-                                        <?php echo $HomeTeamName; ?>
-                                    </div>
-                                    <div class="odds-home-score"><?php echo ( $gameodd->HomeTeamScore ) ? $gameodd->HomeTeamScore : '' ; ?></div>
-                                </div>
+                            <?php endif; ?>
                             </div>
-                        </div>
-                    </td>
-                    <td class="consensus-panel">
-                        <?php if ( ! empty( $gameodd->PregameOdds ) ) : 
-                            foreach ( $gameodd->PregameOdds as $single ) :
-                                if ( $single->Sportsbook === 'Consensus' ) :
-                                    consensusPanel( $single );
-                                    break;
-                                endif;
-                            endforeach;
-                        endif; ?>
-                    </td>
-                    
-                    <?php 
-                    if ( ! empty( $gameodd->PregameOdds ) ) : 
-                        foreach ( $sportsbooks as $sportsbookItem ) :
-                            // if ( in_array( $sportsbookItem['id'], $available ) ) :
+                        </td>
+                        <td class="consensus-panel">
+                            <?php if ( ! empty( $gameodd->PregameOdds ) ) : 
+                                foreach ( $gameodd->PregameOdds as $single ) :
+                                    if ( $single->Sportsbook === 'Consensus' ) :
+                                        consensusPanel( $single );
+                                        break;
+                                    endif;
+                                endforeach;
+                            endif; ?>
+                        </td>
+                        
+                        <?php 
+                        if ( ! empty( $gameodd->PregameOdds ) ) : 
+                            foreach ( $sportsbooks as $sportsbookItem ) :
                                 $found = false;
                                 foreach ( $gameodd->PregameOdds as $odds) :
                                     if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
@@ -317,45 +317,31 @@ var headerValue = "14ab1b17eede492d8996908963d2ebbd";
                                 if ( ! $found ) {
                                     naBookline();
                                 }
-                                
-                            // endif;
-                        endforeach;
-                    
-                    else : 
-                        foreach ( $sportsbooks as $sportsbookTemp ) : 
-                            if ( in_array( $sportsbookTemp['id'], $available ) ) : ?>
-                                <td class="sportsbook-panel">
-                                    <div class="uk-panel">
-                                        <div class="odds-sb-bookline">
-                                            <div class="uk-background-muted sb-bookline-extlink">
-                                                <span class="uk-text-muted uk-text-small">N/A</span>
-                                            </div>
-                                        </div>
-                                        <div class="odds-sb-bookline">
-                                            <div class="uk-background-muted sb-bookline-extlink">
-                                                <span class="uk-text-muted uk-text-small">N/A</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            <?php endif;
-                        endforeach;
-                    endif; ?>
-                </tr>
-                <tr class="schedule-row">
-                    <td colspan="1" class="schedule-panel">
-                    <?php
-                        $date_set = strtotime($gameodd->DateTime);
-                        $date_set = date('D n/d, g:i A', $date_set);
+                            endforeach;
+                        
+                        else : 
+                            foreach ( $sportsbooks as $sportsbookTemp ) : 
+                                if ( in_array( $sportsbookTemp['id'], $available ) ) {
+                                    naBookline();
+                                }
+                            endforeach;
+                        endif; ?>
+                    </tr>
+                    <tr class="schedule-row">
+                        <td colspan="1" class="schedule-panel">
+                        <?php
+                            $date_set = strtotime($gameodd->DateTime);
+                            $date_set = date('D n/d, g:i A', $date_set);
 
-                        echo '<div>'. $date_set .'| Status: '. $gameodd->Status .'</div>';
-                    ?>
-                    </td>
-                    <td colspan="6">
-                        <div>&nbsp;</div>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+                            echo '<div>'. $date_set .'| Status: '. $gameodd->Status .'</div>';
+                        ?>
+                        </td>
+                        <td colspan="6">
+                            <div>&nbsp;</div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
 
         </table>

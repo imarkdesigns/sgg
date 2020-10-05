@@ -384,44 +384,45 @@ function formatDate(date) {
 				  
 				  // check that the game has odds array
 				  if(gameData.PregameOdds && gameData.PregameOdds.length > 0) {
-				  				
-					bookStr = "DraftKings FanDuel Parx ParxPA BetRivers RiversCasinoPA UnibetNJ";
 								
-					// loop through Pregame odds
-					let available = [];
+						// loop through Pregame odds
+						let available = [];
 
-					for(var i = 0; i < gameData.PregameOdds.length; i++) {
-						available.push(gameData.PregameOdds[i].Sportsbook);
-						if(gameData.PregameOdds[i].Sportsbook == "Consensus") {
-							oddsData.away_consensus = getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, false);
-							oddsData.home_consensus = getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, false);
-						} 
-					}
+						for(var i = 0; i < gameData.PregameOdds.length; i++) {
+							available.push(gameData.PregameOdds[i].Sportsbook);
+							if(gameData.PregameOdds[i].Sportsbook == "Consensus") {
+								oddsData.away_consensus = getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, false);
+								oddsData.home_consensus = getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, false);
+							} 
+						}
 
-					var sportsbooks = [ 'RiversCasinoPA', 'UnibetNJ', 'DraftKings',  'FanDuel', 'ParxPA' ];
-					sportsbooks.forEach(sportsbook => {
-						// if (available.includes(sportsbook)) {
+						var sportsbooks = [ 'RiversCasinoPA', 'UnibetNJ', 'DraftKings', 'FanDuel', 'ParxPA' ];
+						sportsbooks.forEach(sportsbook => {
+							var found = false;
 							for(var i = 0; i < gameData.PregameOdds.length; i++) {
 								if (gameData.PregameOdds[i].Sportsbook == sportsbook) {
 									var oddsBookItem = {};
-									oddsBookItem.sportsbook = gameData.PregameOdds[i].Sportsbook;
+									oddsBookItem.sportsbook = sportsbook;
 									oddsBookItem.away_odds = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, false));
 									oddsBookItem.home_odds = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, false));
 									oddsBookItem.away_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, true, true));
 									oddsBookItem.home_payout = formatOddsVal(getCorrectOddsTypeValue(gameData.PregameOdds[i], oddsType, false, true));
 									
 									oddsData.odds_book.push(oddsBookItem);
-								} else {
-									var oddsBookItem = {};
-									oddsBookItem.sportsbook = gameData.PregameOdds[i].Sportsbook;
-									oddsBookItem.away_odds = 'N/A';
-									oddsBookItem.home_odds = 'N/A';
-									oddsBookItem.away_payout = '';
-									oddsBookItem.home_payout = '';
+									found = true;
 								}
 							}
-						// }
-					});
+							if (!found) {
+								var oddsBookItem = {};
+								oddsBookItem.sportsbook = sportsbook;
+								oddsBookItem.away_odds = null;
+								oddsBookItem.home_odds = null;
+								oddsBookItem.away_payout = null;
+								oddsBookItem.home_payout = null;
+
+								oddsData.odds_book.push(oddsBookItem);
+							}
+						});
 					
 				  } // end odds array check
 				  

@@ -142,7 +142,7 @@ function consensusPanel( $single ) {
 <script type="text/javascript">
 // variables for saving the state of the page
 var responseGameOdds = <?php echo $gameoddsbydate_body_json; ?>;
-var teamsObj =  <?php echo $teams_json; ?>;
+var teamsObj = <?php echo $teams_json; ?>;
 var teamsHashByID = {};
 var currentDate = new Date("<?php echo $currentDate; ?>");
 var oddsType = "Spread";
@@ -305,38 +305,23 @@ var headerValue = "b426343c15c843c3ab56930d2a919e2c";
                     <?php 
                     if ( ! empty( $gameodd->PregameOdds ) ) : 
                         foreach ( $sportsbooks as $sportbookItem ) :
-                            // if ( in_array( $sportsbookItem['id'], $available ) ) :
-                                $found = false;
-                                foreach ( $gameodd->PregameOdds as $odds) :
-                                    if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
-                                        $found = true;
-                                        sportsbookPanel( $odds, $sportsbookItem );
-                                    endif;
-                                endforeach;
-                                if ( ! $found ) {
-                                    naBookline();
-                                }
-                            // endif;
+                            $found = false;
+                            foreach ( $gameodd->PregameOdds as $odds) :
+                                if ( $odds->Sportsbook === $sportsbookItem['id'] ) :
+                                    $found = true;
+                                    sportsbookPanel( $odds, $sportsbookItem );
+                                endif;
+                            endforeach;
+                            if ( ! $found ) {
+                                naBookline();
+                            }
                         endforeach;
                     
                     else : 
                         foreach ( $sportsbooks as $sportsbookTemp ) : 
-                            if ( in_array( $sportsbookTemp['id'], $available ) ) : ?>
-                                <td class="sportsbook-panel">
-                                    <div class="uk-panel">
-                                        <div class="odds-sb-bookline">
-                                            <div class="uk-background-muted sb-bookline-extlink">
-                                                <span class="uk-text-muted uk-text-small">N/A</span>
-                                            </div>
-                                        </div>
-                                        <div class="odds-sb-bookline">
-                                            <div class="uk-background-muted sb-bookline-extlink">
-                                                <span class="uk-text-muted uk-text-small">N/A</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            <?php endif;
+                            if ( in_array( $sportsbookTemp['id'], $available ) ) {
+                                naBookline();
+                            }
                         endforeach;
                     endif; ?>
                 </tr>
